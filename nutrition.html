@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ravinto</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
+  <script src="dataLoader.js"></script>
+</head>
+<body>
+  <h1>Ravinto</h1>
+  <p><strong>Energia:</strong> <span id="energia">–</span> kcal</p>
+  <p><strong>Rasva:</strong>   <span id="rasva">–</span> g</p>
+  <button onclick="history.back()">← Takaisin</button>
+
+  <script>
+    const gtin = new URLSearchParams(window.location.search).get('gtin');
+    loadProductData().then(() => {
+      const p = TUOTETIEDOT.find(r => r.GTIN === gtin) || {};
+      document.getElementById('energia').textContent = p.Energia_kcal|| '–';
+      document.getElementById('rasva').textContent   = p.Rasva_g     || '–';
+    });
+  </script>
+</body>
+</html>

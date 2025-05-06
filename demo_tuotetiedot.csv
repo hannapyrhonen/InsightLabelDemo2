@@ -1,0 +1,6 @@
+"GTIN,Tuotteen_nimi,Kuvaus,Origin_Country,Origin_City,Origin_PostalCode,Paikkakunta,Energia_kcal,Rasva_g,Hiilihydraatit_g,Proteiini_g,Suola_g,Paino_g,Brandi,CO2_g,CO2_Study_Link,Recyclability"
+"1234570000000,Omena,Tuore kotimainen omena.,Suomi,Salo,24100,Helsinki,52,0.2,14,0.3,0.01,150,Marjatuottaja,85,https://example.com/co2-study-omena,Kierr„tett„v„ pahvipahvi"
+"9876543210000,Banaani,Tuontibanaani Fairtrade.,Ecuador,Guayaquil,090150,Turku,89,0.3,23,1.1,0.02,120,FairBanana,150,https://example.com/co2-study-banaani,Kierr„tett„v„ muovipakkaus"
+"5556667778888,Piltti peruna-porkkana,Lasten peruna-porkkanasose.,Ruotsi,Stockholm,11122,Tampere,30,0.1,7,0.8,0.01,190,Piltti,45,https://example.com/co2-study-piltti,Kierr„tett„v„ lasipurkki"
+"3334445556667,Ruisleip„,Tummaruisleip„ siemenill„.,Suomi,Vantaa,01530,Espoo,250,4.2,45,9.1,1.2,500,Leipomo Oy,250,https://example.com/co2-study-leipa,Kierr„tett„v„ paperipussi"
+"9998887776665,Maustamattomat p„hkin„t,Sekap„hkin„pussi.,Saksa,Berlin,10115,Turku,600,54,14,20,0.05,200,P„hkin„Pro,400,https://example.com/co2-study-pahkinat,Kierr„tett„v„ muovipussi"

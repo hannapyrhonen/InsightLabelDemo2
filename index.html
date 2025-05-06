@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tuotedemo – Skannaa</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 2rem; }
+    input, button { padding: .5rem; font-size: 1rem; }
+  </style>
+</head>
+<body>
+  <h1>Tuotedemo 📦</h1>
+  <label for="gtin">Syötä GTIN:</label>
+  <input type="text" id="gtin" placeholder="esim. 1234570000000">
+  <button id="hakuBtn">Hae tuote</button>
+
+  <script>
+    document.getElementById('hakuBtn').addEventListener('click', () => {
+      const gtin = document.getElementById('gtin').value.trim();
+      if (!gtin) return alert('Anna kelvollinen GTIN.');
+      window.location.href = `product.html?gtin=${encodeURIComponent(gtin)}`;
+    });
+  </script>
+</body>
+</html>
