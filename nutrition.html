@@ -4,23 +4,38 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ravinto</title>
+  <!-- Ulkoinen tyylitiedosto -->
+  <link rel="stylesheet" href="style.css">
+  <!-- PapaParse CSV-parser -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
+  <!-- CSV-loader -->
   <script src="dataLoader.js"></script>
-
-  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <h1>Ravinto</h1>
-  <p><strong>Energia:</strong> <span id="energia">–</span> kcal</p>
-  <p><strong>Rasva:</strong>   <span id="rasva">–</span> g</p>
-  <button onclick="history.back()">← Takaisin</button>
+  <div class="container info-card">
+    <h1>Ravinto</h1>
+    <!-- Alkuun tekstiä: Lorem ipsum -->
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.</p>
+
+    <!-- Kaikki ravintoarvot -->
+    <p><strong>Energia:</strong> <span id="energia">–</span> kcal</p>
+    <p><strong>Rasva:</strong> <span id="rasva">–</span> g</p>
+    <p><strong>Hiilihydraatit:</strong> <span id="hiilihydraatit">–</span> g</p>
+    <p><strong>Proteiini:</strong> <span id="proteiini">–</span> g</p>
+    <p><strong>Suola:</strong> <span id="suola">–</span> g</p>
+
+    <button class="button mt-base" onclick="history.back()">← Takaisin</button>
+  </div>
 
   <script>
     const gtin = new URLSearchParams(window.location.search).get('gtin');
     loadProductData().then(() => {
       const p = TUOTETIEDOT.find(r => r.GTIN === gtin) || {};
-      document.getElementById('energia').textContent = p.Energia_kcal|| '–';
-      document.getElementById('rasva').textContent   = p.Rasva_g     || '–';
+      document.getElementById('energia').textContent       = p.Energia_kcal    || '–';
+      document.getElementById('rasva').textContent         = p.Rasva_g         || '–';
+      document.getElementById('hiilihydraatit').textContent= p.Hiilihydraatit_g|| '–';
+      document.getElementById('proteiini').textContent     = p.Proteiini_g     || '–';
+      document.getElementById('suola').textContent         = p.Suola_g         || '–';
     });
   </script>
 </body>
