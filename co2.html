@@ -4,23 +4,43 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CO₂ & Energia</title>
+  <!-- Ulkoinen tyylitiedosto -->
+  <link rel="stylesheet" href="style.css">
+  <!-- PapaParse CSV-parser -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
+  <!-- CSV-loader -->
   <script src="dataLoader.js"></script>
-
-  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <h1>CO₂ ja Energia</h1>
-  <p><strong>CO₂-päästöt:</strong> <span id="co2">–</span> g</p>
-  <p><strong>Energia:</strong>   <span id="energia">–</span> kcal</p>
-  <button onclick="history.back()">← Takaisin</button>
+  <div class="container info-card">
+    <h1>Hiilijalanjälki</h1>
+ 
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum vestibulum.</p>
+
+    <!-- CO₂-arvo -->
+    <p><strong>CO₂-päästöt:</strong> <span id="co2">–</span> g</p>
+
+    <!-- Tutkimuslinkki -->
+    <p><strong>Tutkimus:</strong> <a id="co2-link" href="#" target="_blank">–</a></p>
+
+    <button class="button mt-base" onclick="history.back()">← Takaisin</button>
+  </div>
 
   <script>
     const gtin = new URLSearchParams(window.location.search).get('gtin');
     loadProductData().then(() => {
       const p = TUOTETIEDOT.find(r => r.GTIN === gtin) || {};
-      document.getElementById('co2').textContent      = p.CO2_g       || '–';
-      document.getElementById('energia').textContent = p.Energia_kcal|| '–';
+      // CO2-päästöt
+      document.getElementById('co2').textContent = p.CO2_g != null ? p.CO2_g : '–';
+      // Tutkimuslinkki
+      const link = document.getElementById('co2-link');
+      if (p.CO2_Study_Link) {
+        link.href = p.CO2_Study_Link;
+        link.textContent = 'Avaa tutkimus';
+      } else {
+        link.textContent = 'Ei saatavilla';
+        link.removeAttribute('href');
+      }
     });
   </script>
 </body>
