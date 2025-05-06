@@ -1,105 +1,129 @@
-/* Global Variables */
+/* =====================
+   Global Design Variables
+   ===================== */
 :root {
-    --color-primary: #5E3B48;
-    --color-secondary: #EFA7A1;
-    --color-accent: #A18C6E;
-    --color-bg: #FFFFFF;
-    --color-text: #333333;
-    --font-sans: 'Helvetica Neue', Arial, sans-serif;
-    --font-serif: 'Merriweather', serif;
-    --border-radius: 8px;
-    --padding-base: 16px;
-  }
-  
-  /* Reset & Box Sizing */
-  *, *::before, *::after {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  /* Base Typography */
-  body {
-    font-family: var(--font-sans);
-    color: var(--color-text);
-    background-color: var(--color-bg);
-    line-height: 1.6;
-    padding: var(--padding-base);
-  }
-  
-  h1, h2, h3, h4, h5 {
-    font-family: var(--font-serif);
-    margin-bottom: var(--padding-base);
-    color: var(--color-primary);
-  }
-  
-  p {
-    margin-bottom: var(--padding-base);
-  }
-  
-  /* Container & Layout */
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 var(--padding-base);
-  }
-  
-  /* Responsive Grid for Cards */
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: var(--padding-base);
-    margin-top: var(--padding-base);
-  }
-  
-  /* Card Component */
-  .card {
-    background-color: var(--color-bg);
-    border: 1px solid #ddd;
-    border-radius: var(--border-radius);
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    padding: var(--padding-base);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-  }
-  .card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-  }
-  
-  .card img {
-    max-width: 100%;
-    border-radius: var(--border-radius) var(--border-radius) 0 0;
-    display: block;
-    margin-bottom: var(--padding-base);
-  }
-  
-  .card-title {
-    font-size: 1.25rem;
-    margin-bottom: 0.5rem;
-    color: var(--color-primary);
-  }
-  
-  .card-text {
-    font-size: 1rem;
-    color: var(--color-text);
-  }
-  
-  /* Button Styles */
-  .button {
-    display: inline-block;
-    background-color: var(--color-secondary);
-    color: #fff;
-    padding: 0.75rem 1.5rem;
-    text-decoration: none;
-    border-radius: var(--border-radius);
-    transition: background-color 0.2s ease;
-  }
-  .button:hover {
-    background-color: var(--color-accent);
-  }
-  
-  /* Utility Classes */
-  .mt-base { margin-top: var(--padding-base); }
-  .mb-base { margin-bottom: var(--padding-base); }
-  .text-center { text-align: center; }
-  
+  /* Primary brand colors */
+  --color-primary: #084C61;      /* Dark Teal */
+  --color-secondary: #40C9A2;    /* Light Teal */
+  --color-accent: #FF9A76;       /* Warm Coral */
+  --color-accent2: #FFD460;      /* Soft Yellow */
+
+  /* Backgrounds and text */
+  --color-bg: #F0F8F8;           /* Ultra-light Teal */
+  --color-card-bg: #FFFFFF;      /* White cards */
+  --color-text: #0B132B;         /* Dark Navy */
+
+  /* Typography */
+  --font-sans: 'Montserrat', sans-serif;
+  --font-serif: 'Merriweather', serif;
+
+  /* Spacing & rounding */
+  --border-radius: 16px;
+  --padding-base: 16px;
+}
+
+/* =====================
+   Base Reset & Layout
+   ===================== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  line-height: 1.5;
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 400px;
+  margin: 2rem auto;
+  background: var(--color-secondary);
+  border-radius: var(--border-radius);
+  padding: var(--padding-base);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+/* =====================
+   Typography
+   ===================== */
+h1 {
+  font-family: var(--font-serif);
+  color: var(--color-primary);
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+p {
+  font-size: 1rem;
+  margin-bottom: var(--padding-base);
+}
+
+/* =====================
+   Product Info Card
+   ===================== */
+.product-info {
+  background: var(--color-card-bg);
+  border-radius: var(--border-radius);
+  padding: var(--padding-base);
+  text-align: center;
+  margin-bottom: var(--padding-base);
+}
+
+/* =====================
+   Modules Grid
+   ===================== */
+.modules {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--padding-base);
+}
+
+.card {
+  background: var(--color-card-bg);
+  border-radius: var(--border-radius);
+  padding: var(--padding-base);
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  border: 2px solid var(--color-accent);
+}
+
+.icon {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+/* =====================
+   Info Card Highlight
+   ===================== */
+.info-card {
+  border: 3px solid var(--color-accent);
+}
+
+.info-card .icon {
+  font-size: 3rem;
+  color: var(--color-accent);
+}
+
+/* =====================
+   Utilities
+   ===================== */
+.text-center { text-align: center; }
+.mt-base { margin-top: var(--padding-base); }
+.mb-base { margin-bottom: var(--padding-base); }
