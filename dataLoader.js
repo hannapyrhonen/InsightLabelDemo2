@@ -1,6 +1,12 @@
 // dataLoader.js
-// Lataa demo_tuotetiedot.csv ja täyttää TUOTETIEDOT-muuttujan
+
 let TUOTETIEDOT = [];
+
+const PARSE_CONFIG = {
+  header: true,
+  skipEmptyLines: true,
+  transformHeader: h => h.replace(/^\uFEFF/, '').trim()
+};
 
 function loadProductData() {
   return fetch('demo_tuotetiedot.csv')
@@ -9,12 +15,17 @@ function loadProductData() {
       return response.text();
     })
     .then(csvText => {
-      const { data, errors } = Papa.parse(csvText, {
-        header: true,
-        skipEmptyLines: true
-      });
-      if (errors.length) console.warn('PapaParse-virheet:', errors);
-      TUOTETIEDOT = data;
-      return data;
+      // Poistetaan BOM (jos jostain syystä transformHeader ei hoida)
+      if (csvText.charCodeAt(0) === 0xFEFF) {
+        csvText = csvText.slice(1);
+      }
+      const { data, errors } = Papa.parse(csvText, PARSE_CONFIG);
+      if (errors.length) console.warn('PapaParse-virheitä:', errors);
+      // Trimmaa GTIN-kentän, jos siellä on vahingossa whitespacea
+      TUOTETIEDOT = data.map(r => ({
+        ...r,
+        GTIN: r.GTIN?.trim()
+      }));
+      return TUOTETIEDOT;
     });
 }
