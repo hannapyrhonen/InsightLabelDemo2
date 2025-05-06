@@ -4,36 +4,35 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tuotedemo – Tuote</title>
+
+  <!-- Ulkoinen tyylitiedosto -->
+  <link rel="stylesheet" href="style.css">
+
   <!-- PapaParse CSV-parser -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
   <!-- CSV-loader -->
   <script src="dataLoader.js"></script>
-  <style>
-    body { font-family: Arial, sans-serif; background: #f9f9f9; padding: 2rem; }
-    .product-info { background:#fff; padding:1rem; border-radius:8px; margin-bottom:2rem; }
-    .modules { display: flex; gap:1rem; flex-wrap: wrap; }
-    .card { flex:1 1 120px; background:#fff; border:2px solid #ddd; border-radius:10px; padding:1rem; text-align:center; cursor:pointer; transition:.2s; }
-    .card:hover { border-color:#0077cc; box-shadow:0 2px 8px rgba(0,0,0,0.1); }
-    .icon { font-size:2rem; margin-bottom:.5rem; }
-  </style>
 </head>
 <body>
-  <div class="product-info">
-    <h1 id="name">Ladataan…</h1>
-    <p id="description"></p>
-  </div>
-  <div class="modules">
-    <div class="card" onclick="openModule('co2')">
-      <div class="icon">♻️</div>
-      <div>CO₂ & Energia</div>
+  <div class="container">
+    <div class="product-info">
+      <h1 id="name">Ladataan…</h1>
+      <p id="description"></p>
     </div>
-    <div class="card" onclick="openModule('recycling')">
-      <div class="icon">📦</div>
-      <div>Kierrätettävyys</div>
-    </div>
-    <div class="card" onclick="openModule('nutrition')">
-      <div class="icon">🍎</div>
-      <div>Ravinto</div>
+
+    <div class="modules">
+      <div class="card" onclick="openModule('co2')">
+        <div class="icon">♻️</div>
+        <div>CO₂ & Energia</div>
+      </div>
+      <div class="card" onclick="openModule('recycling')">
+        <div class="icon">📦</div>
+        <div>Kierrätettävyys</div>
+      </div>
+      <div class="card" onclick="openModule('nutrition')">
+        <div class="icon">🍎</div>
+        <div>Ravinto</div>
+      </div>
     </div>
   </div>
 
